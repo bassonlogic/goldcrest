@@ -14,6 +14,44 @@
   --text: #F5F5F5;
   --text-muted: #AAAAAA;
   --transition: 0.3s ease;
+  --nav-bg: rgba(10, 10, 10, 0.95);
+  --nav-mobile-bg: rgba(10, 10, 10, 0.98);
+  --hero-gradient: linear-gradient(135deg, rgba(10,10,10,0.9), rgba(10,10,10,0.7));
+  --gallery-overlay: linear-gradient(transparent, rgba(0,0,0,0.8));
+  --cta-gradient: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(10,10,10,0.9));
+  --border-color: rgba(212, 175, 55, 0.2);
+  --card-border: rgba(212, 175, 55, 0.15);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --black: #F5F5F5;
+    --surface: #FFFFFF;
+    --surface-light: #E8E8E8;
+    --text: #1A1A1A;
+    --text-muted: #777777;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --nav-mobile-bg: rgba(255, 255, 255, 0.98);
+    --hero-gradient: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7));
+    --gallery-overlay: linear-gradient(transparent, rgba(255,255,255,0.9));
+    --cta-gradient: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(255,255,255,0.9));
+    --border-color: rgba(212, 175, 55, 0.35);
+    --card-border: rgba(212, 175, 55, 0.3);
+  }
+
+  .species-card, .lodge-card {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .btn-gold {
+    color: #1A1A1A;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    background: #FFFFFF;
+  }
 }
 
 html {
@@ -42,8 +80,8 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(10, 10, 10, 0.95);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   padding: 0 2rem;
 }
@@ -58,20 +96,13 @@ nav .nav-inner {
 }
 
 nav .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
 }
 
-nav .logo span {
-  font-weight: 300;
-  font-size: 0.9rem;
-  display: block;
-  color: var(--text-muted);
-  letter-spacing: 4px;
-  text-transform: none;
+nav .logo img {
+  height: 55px;
+  width: auto;
 }
 
 nav ul {
@@ -127,7 +158,7 @@ nav ul li a:hover {
 /* Hero Section */
 .hero {
   height: 100vh;
-  background: linear-gradient(135deg, rgba(10,10,10,0.9), rgba(10,10,10,0.7)),
+  background: var(--hero-gradient),
               url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -236,7 +267,7 @@ section {
 .about-grid img {
   width: 100%;
   border-radius: 4px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid var(--border-color);
 }
 
 .about-grid h3 {
@@ -260,7 +291,7 @@ section {
 
 .species-card {
   background: var(--surface);
-  border: 1px solid rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--card-border);
   border-radius: 4px;
   overflow: hidden;
   transition: transform var(--transition), border-color var(--transition);
@@ -301,7 +332,7 @@ section {
 
 .lodge-card {
   background: var(--surface);
-  border: 1px solid rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--card-border);
   border-radius: 4px;
   overflow: hidden;
   transition: transform var(--transition), border-color var(--transition);
@@ -383,7 +414,7 @@ section {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  background: var(--gallery-overlay);
   padding: 1.5rem;
   opacity: 0;
   transition: opacity var(--transition);
@@ -436,12 +467,29 @@ section {
   padding: 1rem;
   margin-bottom: 1rem;
   background: var(--surface-light);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid var(--border-color);
   color: var(--text);
   font-size: 1rem;
   border-radius: 4px;
   transition: border-color var(--transition);
   font-family: inherit;
+}
+
+.contact-form select {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--surface-light);
+  border: 1px solid var(--border-color);
+  color: var(--text);
+  font-size: 1rem;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.contact-form select:focus {
+  outline: none;
+  border-color: var(--gold);
 }
 
 .contact-form input:focus,
@@ -458,7 +506,7 @@ section {
 /* CTA Section */
 .cta-section {
   text-align: center;
-  background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(10,10,10,0.9)),
+  background: var(--cta-gradient),
               var(--surface);
 }
 
@@ -502,7 +550,7 @@ section {
 /* Footer */
 footer {
   background: var(--surface);
-  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  border-top: 1px solid var(--card-border);
   padding: 3rem 2rem;
   text-align: center;
 }
@@ -547,9 +595,9 @@ footer p {
     top: 70px;
     left: 0;
     right: 0;
-    background: rgba(10, 10, 10, 0.98);
+    background: var(--nav-mobile-bg);
     padding: 1rem 2rem;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid var(--border-color);
     gap: 1rem;
   }
 
