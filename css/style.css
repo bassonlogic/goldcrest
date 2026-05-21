@@ -96,13 +96,20 @@ nav .nav-inner {
 }
 
 nav .logo {
-  display: flex;
-  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-nav .logo img {
-  height: 55px;
-  width: auto;
+nav .logo span {
+  font-weight: 300;
+  font-size: 0.9rem;
+  display: block;
+  color: var(--text-muted);
+  letter-spacing: 4px;
+  text-transform: none;
 }
 
 nav ul {
